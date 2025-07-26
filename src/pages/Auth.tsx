@@ -21,7 +21,7 @@ const Auth = () => {
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
+      const { error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
@@ -32,12 +32,6 @@ const Auth = () => {
           description: error.message,
           variant: "destructive",
         });
-      } else if (data.user) {
-        toast({
-          title: "Berhasil!",
-          description: "Login berhasil, mengarahkan ke chat...",
-        });
-        navigate('/chat');
       }
     } catch (error) {
       toast({
