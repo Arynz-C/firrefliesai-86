@@ -73,42 +73,6 @@ export type Database = {
         }
         Relationships: []
       }
-      paypal_orders: {
-        Row: {
-          amount: number | null
-          created_at: string
-          email: string
-          id: string
-          paypal_capture_id: string | null
-          paypal_order_id: string
-          status: string | null
-          updated_at: string
-          user_id: string | null
-        }
-        Insert: {
-          amount?: number | null
-          created_at?: string
-          email: string
-          id?: string
-          paypal_capture_id?: string | null
-          paypal_order_id: string
-          status?: string | null
-          updated_at?: string
-          user_id?: string | null
-        }
-        Update: {
-          amount?: number | null
-          created_at?: string
-          email?: string
-          id?: string
-          paypal_capture_id?: string | null
-          paypal_order_id?: string
-          status?: string | null
-          updated_at?: string
-          user_id?: string | null
-        }
-        Relationships: []
-      }
       profiles: {
         Row: {
           created_at: string
