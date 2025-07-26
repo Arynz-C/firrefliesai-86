@@ -69,8 +69,6 @@ const Auth = () => {
       return;
     }
 
-    console.log('🔍 Attempting signup with:', { email, passwordLength: password.length });
-
     try {
       const { data, error } = await supabase.auth.signUp({
         email,
@@ -80,27 +78,21 @@ const Auth = () => {
         }
       });
 
-      console.log('📝 Signup response:', { data, error });
-
       if (error) {
-        console.error('❌ Signup error:', error);
         toast({
           title: "Error",
-          description: `${error.message} (Code: ${error.status || 'Unknown'})`,
+          description: error.message,
           variant: "destructive",
         });
-      } else {
-        console.log('✅ Signup successful');
+      } else if (data.user) {
         toast({
           title: "Berhasil!",
-          description: "Silakan cek email Anda untuk konfirmasi akun",
+          description: "Akun berhasil dibuat, mengarahkan ke chat...",
         });
-        // Clear form
-        setEmail('');
-        setPassword('');
+        // Navigate to chat page immediately
+        navigate('/chat');
       }
     } catch (error: any) {
-      console.error('💥 Signup exception:', error);
       toast({
         title: "Error",
         description: `Terjadi kesalahan: ${error.message || 'Unknown error'}`,
